@@ -1,22 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
-import PropTypes from 'prop-types';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+// import PropTypes from 'prop-types';
+import { ThemeProvider } from 'styled-components';
+import theme from '../src/theme/index';
+import GlobalStyle from '../src/theme/GlobalStyle';
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-`;
-
-const theme = {
-  colors: {
-    primary: '#0070f3',
-  },
-};
-
+// eslint-disable-next-line react/prop-types
 export default function App({ Component, pageProps }) {
   return (
     <>
@@ -28,8 +17,8 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <GlobalStyle />
       <ThemeProvider theme={theme}>
+        <GlobalStyle />
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <Component {...pageProps} />
       </ThemeProvider>
@@ -37,7 +26,7 @@ export default function App({ Component, pageProps }) {
   );
 }
 
-App.propTypes = {
-  Component: PropTypes.string.isRequired,
-  pageProps: PropTypes.string.isRequired,
-};
+// App.propTypes = {
+//   Component: PropTypes.func.isRequired,
+//   pageProps: PropTypes.object.isRequired,
+// };
