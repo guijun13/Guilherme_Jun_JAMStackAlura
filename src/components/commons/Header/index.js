@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from '../../../theme/Logo';
 import HeaderWrapper from './styles/HeaderWrapper';
 
 const links = [
@@ -17,7 +18,7 @@ export default function Header() {
   return (
     <HeaderWrapper>
       <HeaderWrapper.LeftSide>
-        <h1>Logo</h1>
+        <Logo />
       </HeaderWrapper.LeftSide>
       <HeaderWrapper.RightSide>
         {links.map(link => (
