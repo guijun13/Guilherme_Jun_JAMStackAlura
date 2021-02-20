@@ -11,7 +11,10 @@ const Grid = {
     margin-left: auto;
 
     ${propToStyle('marginTop')}
+    ${propToStyle('marginBottom')}
     ${propToStyle('height')}
+    ${propToStyle('borderRadius')}
+    ${propToStyle('boxShadow')}
   `,
   Col: styled.div`
     padding-right: 16px;
@@ -112,6 +115,13 @@ const Grid = {
     ${propToStyle('alignItems')}
     ${propToStyle('justifyContent')}
     ${propToStyle('flexDirection')}
+  `,
+  Row: styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-right: -16px;
+    margin-left: -16px;
   `,
 };
 
