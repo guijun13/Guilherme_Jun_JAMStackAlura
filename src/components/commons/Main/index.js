@@ -6,10 +6,10 @@ export default function Main() {
   return (
     <Grid.Container
       marginTop={{
-        xs: '150px',
-        md: '200px',
+        xs: '300px',
+        md: '260px',
       }}
-      height="70vh"
+      height="50vh"
     >
       <Grid.Col
         value={{ md: 6, xs: 8 }}
@@ -19,11 +19,11 @@ export default function Main() {
         justifyContent="center"
         flexDirection="column"
       >
-        <Text tag="h1" variant="titleh1">
+        <Text textAlign="center" tag="h1" variant="titleh1">
           GUILHERME JUN
         </Text>
-        <Text tag="h3" variant="titleh3">
-          Portfolio
+        <Text textAlign="center" tag="h3" variant="titleh3">
+          Front-ender
         </Text>
       </Grid.Col>
     </Grid.Container>
