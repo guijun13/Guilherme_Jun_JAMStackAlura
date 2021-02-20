@@ -87,7 +87,7 @@ HeaderWrapper.RightSide = styled.div`
     })}
     &:hover,
     &:focus {
-      font-weight: 700;
+      font-weight: 400;
       color: ${({ theme }) => theme.colors.primary.main.color};
     }
   }
