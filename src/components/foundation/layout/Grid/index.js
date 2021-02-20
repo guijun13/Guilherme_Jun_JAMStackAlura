@@ -5,8 +5,8 @@ import propToStyle from '../../../../theme/utils/propToStyle';
 const Grid = {
   Container: styled.div`
     width: 100%;
-    padding-right: 28px;
-    padding-left: 28px;
+    padding-right: 12px;
+    padding-left: 12px;
     margin-right: auto;
     margin-left: auto;
 
@@ -17,8 +17,8 @@ const Grid = {
     ${propToStyle('boxShadow')}
   `,
   Col: styled.div`
-    padding-right: 16px;
-    padding-left: 16px;
+    padding-right: 20px;
+    padding-left: 20px;
     flex-basis: 0;
     flex-grow: 1;
     max-width: 100%;
@@ -120,8 +120,8 @@ const Grid = {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-right: -16px;
-    margin-left: -16px;
+    margin-right: -12px;
+    margin-left: -12px;
   `,
 };
 
