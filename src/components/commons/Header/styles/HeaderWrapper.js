@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import breakpointsMedia from '../../../../theme/utils/breakpointsMedia';
+import { TextStyleVariantsMap } from '../../../foundation/Text';
 
 const HeaderWrapper = styled.nav`
   background-color: ${({ theme }) => theme.colors.secondary.main.color};
-  font-family: 'Ubuntu', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,6 +47,8 @@ HeaderWrapper.LeftSide = styled.div`
 `;
 
 HeaderWrapper.RightSide = styled.div`
+  color: ${({ theme }) => theme.colors.secondary.main.contrastText};
+  font-family: 'Ubuntu', sans-serif;
   padding: 0;
   margin: 0;
   order: 3;
@@ -68,6 +70,27 @@ HeaderWrapper.RightSide = styled.div`
       padding-bottom: 0;
     `,
   })}
+  a {
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.secondary.main.contrastText};
+    transition: 200ms ease-in-out;
+    ${breakpointsMedia({
+      xs: css`
+        ${TextStyleVariantsMap.small}
+      `,
+      md: css`
+        ${TextStyleVariantsMap.regular}
+      `,
+    })}
+    &:hover,
+    &:focus {
+      font-weight: 700;
+      color: ${({ theme }) => theme.colors.primary.main.color};
+    }
+  }
 `;
 
 export default HeaderWrapper;

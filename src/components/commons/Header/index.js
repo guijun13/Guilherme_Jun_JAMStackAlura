@@ -1,5 +1,6 @@
 import React from 'react';
 import Logo from '../../../theme/Logo';
+import Text from '../../foundation/Text';
 import HeaderWrapper from './styles/HeaderWrapper';
 
 const links = [
@@ -23,7 +24,9 @@ export default function Header() {
       <HeaderWrapper.RightSide>
         {links.map(link => (
           <li key={link.text}>
-            <p>{link.text}</p>
+            <Text tag="a" variant="regular">
+              {link.text}
+            </Text>
           </li>
         ))}
       </HeaderWrapper.RightSide>
