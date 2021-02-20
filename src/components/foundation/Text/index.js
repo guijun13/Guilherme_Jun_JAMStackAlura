@@ -50,6 +50,8 @@ const TextBase = styled.span`
   ${props => TextStyleVariantsMap[props.variant]};
   margin: 0;
   ${propToStyle('textAlign')};
+  ${propToStyle('marginBottom')};
+  ${propToStyle('margin')};
 `;
 
 export default function Text({ tag, variant, children, ...props }) {
