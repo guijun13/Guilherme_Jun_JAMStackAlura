@@ -19,7 +19,7 @@ export default function About() {
         </Grid.Row>
         <Grid.Row>
           <Grid.Col
-            value={{ md: 4, xs: 8 }} // ocupa colunas
+            value={{ md: 4, xs: 12 }} // ocupa colunas
             offset={{ md: 1, xs: 0 }} // desloca/pula colunas
             display="flex"
             alignItems="flex-start"
@@ -34,7 +34,7 @@ export default function About() {
           </Grid.Col>
           <Grid.Col
             value={{ md: 6, xs: 12 }} // ocupa colunas
-            offset={{ md: 0.5, xs: 0 }} // desloca/pula colunas
+            offset={{ md: 1, xs: 0 }} // desloca/pula colunas
             display="flex"
             alignItems="center"
             justifyContent="center"

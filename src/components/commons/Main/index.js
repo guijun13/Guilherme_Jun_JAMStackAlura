@@ -6,10 +6,10 @@ export default function Main() {
   return (
     <Grid.Container
       marginTop={{
-        xs: '32px',
-        md: '75px',
+        xs: '150px',
+        md: '200px',
       }}
-      height="100vh"
+      height="70vh"
     >
       <Grid.Col
         value={{ md: 6, xs: 8 }}
