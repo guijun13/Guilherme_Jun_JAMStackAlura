@@ -1,5 +1,6 @@
 import React from 'react';
 import About from '../src/components/commons/About';
+import Footer from '../src/components/commons/Footer';
 import Header from '../src/components/commons/Header';
 import Main from '../src/components/commons/Main';
 import Projects from '../src/components/commons/Projects';
@@ -31,6 +32,7 @@ export default function Home() {
         <Main />
         <About />
         <Projects />
+        <Footer />
       </Box>
     </Box>
   );
