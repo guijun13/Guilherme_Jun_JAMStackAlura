@@ -2,15 +2,34 @@ import React from 'react';
 import About from '../src/components/commons/About';
 import Header from '../src/components/commons/Header';
 import Main from '../src/components/commons/Main';
-// import Grid from '../src/components/foundation/layout/Grid';
-// import Text from '../src/components/foundation/Text';
+import Box from '../src/components/foundation/layout/Box';
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <Main />
-      <About />
-    </>
+    <Box
+      flex={1}
+      display="flex"
+      flexWrap="wrap"
+      flexDirection="column"
+      justifyContent="space-between"
+      backgroundImage="url(/images/bubble_green.svg)"
+      backgroundRepeat="no-repeat"
+      backgroundPosition="top left"
+    >
+      <Box
+        flex={1}
+        display="flex"
+        flexWrap="wrap"
+        flexDirection="column"
+        justifyContent="space-between"
+        backgroundImage="url(/images/bubble_gray.svg)"
+        backgroundRepeat="no-repeat"
+        backgroundPosition="bottom right"
+      >
+        <Header />
+        <Main />
+        <About />
+      </Box>
+    </Box>
   );
 }
