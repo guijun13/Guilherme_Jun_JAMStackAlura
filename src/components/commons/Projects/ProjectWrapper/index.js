@@ -34,7 +34,7 @@ export default function ProjectWrapper({ project }) {
       <Text marginBottom="20px" textAlign="center" tag="h5" variant="titleh5">
         {project.title}
       </Text>
-      <Text margin="0 20px" tag="p" variant="smallest">
+      <Text margin="0 20px" textAlign="center" tag="p" variant="small">
         {project.description}
       </Text>
       <LanguageContainer>

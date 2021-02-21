@@ -7,16 +7,32 @@ import ProjectWrapper from './ProjectWrapper';
 const projects = [
   {
     image: 'https://placehold.it/300x150.png',
-    title: 'Titulo de um projeto',
+    url: 'https://github.com/guijun13/instadev',
+    title: '/instadev',
+    description: 'Projeto principal do Bootcamp Front-End JAMStack da Alura',
+    languages: ['Javascript', 'Next.js'],
+  },
+  {
+    image: 'https://placehold.it/300x150.png',
+    url: 'https://github.com/guijun13/ux-quiz',
+    title: '/ux-quiz',
     description:
       'Projeto de quiz criado durante a Imersão React Nextjs v2 por Alura',
+    languages: ['Javascript', 'Next.js'],
+  },
+  {
+    image: 'https://placehold.it/300x150.png',
+    url: 'https://github.com/guijun13/guijunflix',
+    title: '/guijunflix',
+    description: 'Projeto da ImersãoReact da Alura',
     languages: ['Javascript', 'CSS'],
   },
   {
     image: 'https://placehold.it/300x150.png',
-    title: 'Titulo de outro projeto',
+    url: 'https://github.com/guijun13/CacheSite',
+    title: '/CacheSite',
     description:
-      'Projeto de quiz criado durante a Imersão React Nextjs v2 por Alura',
+      'Site estático sobre memória cache: definição e funções de mapeamento',
     languages: ['Javascript'],
   },
 ];
