@@ -26,7 +26,7 @@ export default function Home() {
         justifyContent="space-between"
         backgroundImage="url(/images/bubble_gray.svg)"
         backgroundRepeat="no-repeat"
-        backgroundPosition="bottom right"
+        backgroundPosition="center right"
       >
         <Header />
         <Main />
