@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '../../foundation/layout/Grid';
 import Text from '../../foundation/Text';
-import AboutWrapper from './styles/AboutWrapper';
+import CardContainer from '../../../theme/utils/CardContainer';
 
 export default function About() {
   return (
@@ -11,9 +11,9 @@ export default function About() {
         md: '130px',
       }}
     >
-      <AboutWrapper>
+      <CardContainer>
         <Grid.Row>
-          <Text tag="h3" variant="titleh3">
+          <Text margin="20px" tag="h3" variant="titleh3">
             Sobre mim
           </Text>
         </Grid.Row>
@@ -27,29 +27,43 @@ export default function About() {
             flexDirection="column"
           >
             <img
-              style={{ display: 'block', margin: 'auto' }}
+              style={{
+                display: 'block',
+                margin: 'auto',
+                marginBottom: '20px',
+                border: 'solid 12px #66D0A1',
+                borderRadius: '50%',
+              }}
               src="/images/profile.png"
               alt="img"
             />
           </Grid.Col>
           <Grid.Col
             value={{ md: 6, xs: 12 }} // ocupa colunas
-            offset={{ md: 1, xs: 0 }} // desloca/pula colunas
+            offset={{ md: 0.5, xs: 0 }} // desloca/pula colunas
             display="flex"
             alignItems="center"
             justifyContent="center"
             flexDirection="column"
           >
-            <Text tag="p" variant="titleh5">
-              Sou Guilherme Jun, estudante de Ciências de Computação na USP
-              campus São Carlos. Atualmente estou estudando Front-End web e
-              mobile com HTML, CSS, JS, React e React Native, realizando o
-              Bootcamp Front-end JAMStack da Alura.Tenho interesse também na
-              área de interface do usuário, UX/UI Design.
+            <Text margin="20px" tag="p" variant="titleh5">
+              Sou Guilherme Jun, estudante de Ciências de Computação na USP -
+              campus São Carlos. Faço parte da empresa júnior do meu instituto,
+              a ICMC Júnior, onde faço parte do núcleo de Projetos de Computação
+              desde Out/2019.
+              <br />
+              <br />
+              Atualmente estou estudando Front-End web e mobile com HTML, CSS,
+              JS, React e React Native, realizando o Bootcamp Front-end JAMStack
+              da Alura.
+              <br />
+              <br />
+              Tenho interesse também na área de interface do usuário, UX/UI
+              Design.
             </Text>
           </Grid.Col>
         </Grid.Row>
-      </AboutWrapper>
+      </CardContainer>
     </Grid.Container>
   );
 }

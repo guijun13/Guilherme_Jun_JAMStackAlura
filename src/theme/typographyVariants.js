@@ -1,31 +1,31 @@
 const typographyVariants = {
   // [title]
   titleh1: {
-    fontSize: '48px',
+    fontSize: '42px',
     fontWeight: '700',
     lineHeight: 1.25, // 125%
   },
   // [title]
   titleh2: {
-    fontSize: '40px',
+    fontSize: '36px',
     fontWeight: '700',
     lineHeight: 1.25, // 125%
   },
   // [title]
   titleh3: {
-    fontSize: '32px',
+    fontSize: '30px',
     fontWeight: '400',
     lineHeight: 1.25, // 125%
   },
   // [title]
   titleh4: {
-    fontSize: '24px',
+    fontSize: '22px',
     fontWeight: '7400',
     lineHeight: 1.25, // 125%
   },
   // [title]
   titleh5: {
-    fontSize: '20px',
+    fontSize: '18px',
     fontWeight: '400',
     lineHeight: 1.25, // 125%
   },

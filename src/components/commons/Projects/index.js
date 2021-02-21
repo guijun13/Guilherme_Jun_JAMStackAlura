@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '../../foundation/layout/Grid';
 import Text from '../../foundation/Text';
-import AboutWrapper from '../About/styles/AboutWrapper';
+import CardContainer from '../../../theme/utils/CardContainer';
 import ProjectWrapper from './ProjectWrapper';
 
 const projects = [
@@ -29,9 +29,9 @@ export default function Projects() {
         md: '130px',
       }}
     >
-      <AboutWrapper>
+      <CardContainer>
         <Grid.Row>
-          <Text marginBottom="20px" tag="h3" variant="titleh3">
+          <Text margin="20px" tag="h3" variant="titleh3">
             Projetos
           </Text>
         </Grid.Row>
@@ -50,7 +50,7 @@ export default function Projects() {
             </Grid.Col>
           ))}
         </Grid.Row>
-      </AboutWrapper>
+      </CardContainer>
     </Grid.Container>
   );
 }
