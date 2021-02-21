@@ -6,7 +6,7 @@ export default function Main() {
   return (
     <Grid.Container
       marginTop={{
-        xs: '300px',
+        xs: '150px',
         md: '260px',
       }}
       height="50vh"
