@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import Text from '../../foundation/Text';
 import Github from '../../../theme/Github';
@@ -7,6 +7,7 @@ import Facebook from '../../../theme/Facebook';
 import Instagram from '../../../theme/Instagram';
 import Mail from '../../../theme/Mail';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
+import Modal from '../Modal';
 
 const socials = [
   {
@@ -94,13 +95,27 @@ const MessageButton = styled.button`
 `;
 
 export default function Footer() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <FooterWrapper>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+        }}
+      >
+        {modalProps => <div modalProps={modalProps}>MODAL</div>}
+      </Modal>
       <Text margin="20px" tag="h3" variant="titleh3">
         Contato
       </Text>
       <SocialWrapper value={{ md: 6, xs: 12 }}>
-        <MessageButton>
+        <MessageButton
+          onClick={() => {
+            setIsModalOpen(!isModalOpen);
+          }}
+        >
           <Mail />
           <Text margin="0 0 0 10px" tag="p" variant="regular">
             Enviar uma mensagem
