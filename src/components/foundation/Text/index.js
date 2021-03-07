@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 import styled, { css } from 'styled-components';
 import propToStyle from '../../../theme/utils/propToStyle';
 
@@ -48,6 +49,7 @@ export const TextStyleVariantsMap = {
 
 const TextBase = styled.span`
   ${props => TextStyleVariantsMap[props.variant]};
+  color: ${props => get(props.theme, `colors.${props.color}.contrastText`)};
   margin: 0;
   ${propToStyle('textAlign')};
   ${propToStyle('marginBottom')};

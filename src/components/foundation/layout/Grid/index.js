@@ -112,6 +112,7 @@ const Grid = {
     }}
 
     ${propToStyle('display')}
+    ${propToStyle('flex')}
     ${propToStyle('alignItems')}
     ${propToStyle('justifyContent')}
     ${propToStyle('flexDirection')}
@@ -122,6 +123,13 @@ const Grid = {
     justify-content: center;
     margin-right: -12px;
     margin-left: -12px;
+
+    ${propToStyle('display')}
+    ${propToStyle('flex')}
+    ${propToStyle('marginLeft')}
+    ${propToStyle('marginRight')}
+    ${propToStyle('justifyContent')}
+    ${propToStyle('flexDirection')}
   `,
 };
 

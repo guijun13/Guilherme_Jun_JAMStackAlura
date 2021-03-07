@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components';
 
 const ModalWrapper = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: stretch;
   background: rgba(0, 0, 0, 0.1);
   position: fixed;

@@ -8,6 +8,7 @@ import Instagram from '../../../theme/Instagram';
 import Mail from '../../../theme/Mail';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 import Modal from '../Modal';
+import MessageForm from '../../patterns/MessageForm';
 
 const socials = [
   {
@@ -105,7 +106,7 @@ export default function Footer() {
           setIsModalOpen(false);
         }}
       >
-        {modalProps => <div modalProps={modalProps}>MODAL</div>}
+        {modalProps => <MessageForm modalProps={modalProps} />}
       </Modal>
       <Text margin="20px" tag="h3" variant="titleh3">
         Contato
