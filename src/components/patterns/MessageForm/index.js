@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Player } from '@lottiefiles/react-lottie-player';
+import successAnimation from './animations/success.json';
+import errorAnimation from './animations/error.json';
 import Grid from '../../foundation/layout/Grid';
 import Box from '../../foundation/layout/Box';
 import Text from '../../foundation/Text';
@@ -18,9 +21,9 @@ function MessageContent() {
   const [submissionStatus, setSubmissionStatus] = useState(formStates.DEFAULT);
 
   const [userInfo, setUserInfo] = useState({
-    name: 'Guilherme Jun',
-    email: 'guilherme@jun.com.br',
-    message: 'Mensagem padrão aqui',
+    name: '',
+    email: '',
+    message: '',
   });
 
   function handleChange(event) {
@@ -150,12 +153,22 @@ function MessageContent() {
         </Button>
         {isMessageSubmitted && submissionStatus === formStates.DONE && (
           <>
-            <p>DONE</p>
+            <Player
+              autoplay
+              loop
+              src={successAnimation}
+              style={{ height: '100px', width: '100px' }}
+            />
           </>
         )}
         {isMessageSubmitted && submissionStatus === formStates.ERROR && (
           <>
-            <p>ERROR</p>
+            <Player
+              autoplay
+              loop
+              src={errorAnimation}
+              style={{ height: '100px', width: '100px' }}
+            />
           </>
         )}
       </form>
