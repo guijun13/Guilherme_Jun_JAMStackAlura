@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '../../foundation/layout/Grid';
 import Box from '../../foundation/layout/Box';
@@ -6,10 +6,73 @@ import Text from '../../foundation/Text';
 import TextField from '../../forms/TextField';
 import Button from '../../commons/Button';
 
+const formStates = {
+  DEFAULT: 'DEFAULT',
+  LOADING: 'LOADING',
+  DONE: 'DONE',
+  ERROR: 'ERROR',
+};
+
 function MessageContent() {
+  const [isMessageSubmitted, setIsMessageSubmitted] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState(formStates.DEFAULT);
+
+  const [userInfo, setUserInfo] = useState({
+    name: 'Guilherme Jun',
+    email: 'guilherme@jun.com.br',
+    message: 'Mensagem padrão aqui',
+  });
+
+  function handleChange(event) {
+    const fieldName = event.target.getAttribute('name');
+    setUserInfo({
+      ...userInfo, // mantem as outras infos do objeto
+      [fieldName]: event.target.value,
+    });
+  }
+
+  const isFormInvalid =
+    userInfo.name.length === 0 || userInfo.email.length === 0;
+
   return (
     <>
-      <form>
+      <form
+        onSubmit={event => {
+          event.preventDefault(); // previne o evento padrao do <form />, que é action="/api/..."
+
+          setIsMessageSubmitted(true);
+
+          // Data Transfer Object
+          const userDTO = {
+            name: userInfo.name,
+            email: userInfo.email,
+            message: userInfo.message,
+          };
+
+          fetch('https://contact-form-api-jamstack.herokuapp.com/message', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userDTO),
+          })
+            .then(serverResponse => {
+              if (serverResponse.ok) {
+                return serverResponse.json();
+              }
+
+              throw new Error('Não foi possível cadastrar um novo usuário :c');
+            })
+            .then(serverResponseObject => {
+              setSubmissionStatus(formStates.DONE);
+              console.log(serverResponseObject);
+            })
+            .catch(error => {
+              setSubmissionStatus(formStates.ERROR);
+              console.error(error);
+            });
+        }}
+      >
         <Text
           marginBottom="20px"
           textAlign="center"
@@ -31,8 +94,8 @@ function MessageContent() {
           <TextField
             placeholder="Nome"
             name="name"
-            // value={userInfo.name}
-            // onChange={handleChange}
+            value={userInfo.name}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -47,8 +110,8 @@ function MessageContent() {
           <TextField
             placeholder="Email"
             name="email"
-            // value={userInfo.name}
-            // onChange={handleChange}
+            value={userInfo.email}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -73,18 +136,28 @@ function MessageContent() {
               borderRadius: '12px',
               marginBottom: '20px',
             }}
-            // value={userInfo.name}
-            // onChange={handleChange}
+            value={userInfo.message}
+            onChange={handleChange}
           />
         </div>
         <Button
           type="submit"
-          // disabled={isFormInvalid}
+          disabled={isFormInvalid}
           variant="primary.main"
           fullWidth
         >
           Enviar
         </Button>
+        {isMessageSubmitted && submissionStatus === formStates.DONE && (
+          <>
+            <p>DONE</p>
+          </>
+        )}
+        {isMessageSubmitted && submissionStatus === formStates.ERROR && (
+          <>
+            <p>ERROR</p>
+          </>
+        )}
       </form>
     </>
   );
