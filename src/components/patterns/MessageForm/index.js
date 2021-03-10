@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Player } from '@lottiefiles/react-lottie-player';
 import successAnimation from './animations/success.json';
 import errorAnimation from './animations/error.json';
+import loadingAnimation from './animations/loading.json';
 import Grid from '../../foundation/layout/Grid';
 import Box from '../../foundation/layout/Box';
 import Text from '../../foundation/Text';
@@ -43,6 +44,7 @@ function MessageContent() {
         onSubmit={event => {
           event.preventDefault(); // previne o evento padrao do <form />, que é action="/api/..."
 
+          setSubmissionStatus(formStates.LOADING);
           setIsMessageSubmitted(true);
 
           // Data Transfer Object
@@ -145,32 +147,44 @@ function MessageContent() {
         </div>
         <Button
           type="submit"
-          disabled={isFormInvalid}
+          disabled={isFormInvalid || isMessageSubmitted}
           variant="primary.main"
           fullWidth
         >
-          Enviar
+          {!isMessageSubmitted && submissionStatus === formStates.DEFAULT && (
+            <>Enviar</>
+          )}
+          {isMessageSubmitted && submissionStatus === formStates.LOADING && (
+            <>
+              <Player
+                autoplay
+                loop
+                src={loadingAnimation}
+                style={{ height: '100px', width: '100px' }}
+              />
+            </>
+          )}
+          {isMessageSubmitted && submissionStatus === formStates.DONE && (
+            <>
+              <Player
+                autoplay
+                loop
+                src={successAnimation}
+                style={{ height: '100px', width: '100px' }}
+              />
+            </>
+          )}
+          {isMessageSubmitted && submissionStatus === formStates.ERROR && (
+            <>
+              <Player
+                autoplay
+                loop
+                src={errorAnimation}
+                style={{ height: '100px', width: '100px' }}
+              />
+            </>
+          )}
         </Button>
-        {isMessageSubmitted && submissionStatus === formStates.DONE && (
-          <>
-            <Player
-              autoplay
-              loop
-              src={successAnimation}
-              style={{ height: '100px', width: '100px' }}
-            />
-          </>
-        )}
-        {isMessageSubmitted && submissionStatus === formStates.ERROR && (
-          <>
-            <Player
-              autoplay
-              loop
-              src={errorAnimation}
-              style={{ height: '100px', width: '100px' }}
-            />
-          </>
-        )}
       </form>
     </>
   );
