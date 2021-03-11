@@ -1,13 +1,40 @@
 import React, { useState } from 'react';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { Player } from '@lottiefiles/react-lottie-player';
 import successAnimation from './animations/success.json';
 import errorAnimation from './animations/error.json';
+import loadingAnimation from './animations/loading.json';
 import Grid from '../../foundation/layout/Grid';
 import Box from '../../foundation/layout/Box';
 import Text from '../../foundation/Text';
 import TextField from '../../forms/TextField';
 import Button from '../../commons/Button';
+import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
+
+const SmallInputContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  ${({ value }) =>
+    breakpointsMedia({
+      xs: value?.xs
+        ? css`
+            flex-direction: column;
+          `
+        : '',
+      md: value?.md
+        ? css`
+            flex-direction: row;
+          `
+        : '',
+    })}
+`;
+
+const SmallInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
 
 const formStates = {
   DEFAULT: 'DEFAULT',
@@ -43,6 +70,7 @@ function MessageContent() {
         onSubmit={event => {
           event.preventDefault(); // previne o evento padrao do <form />, que é action="/api/..."
 
+          setSubmissionStatus(formStates.LOADING);
           setIsMessageSubmitted(true);
 
           // Data Transfer Object
@@ -85,38 +113,40 @@ function MessageContent() {
         >
           Envie uma mensagem
         </Text>
-        <div>
-          <Text
-            marginBottom="5px"
-            variant="regular"
-            tag="p"
-            color="primary.main"
-          >
-            Nome
-          </Text>
-          <TextField
-            placeholder="Nome"
-            name="name"
-            value={userInfo.name}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <Text
-            marginBottom="5px"
-            variant="regular"
-            tag="p"
-            color="primary.main"
-          >
-            Email
-          </Text>
-          <TextField
-            placeholder="Email"
-            name="email"
-            value={userInfo.email}
-            onChange={handleChange}
-          />
-        </div>
+        <SmallInputContainer value={{ xs: 1, md: 1 }}>
+          <SmallInput>
+            <Text
+              marginBottom="5px"
+              variant="regular"
+              tag="p"
+              color="primary.main"
+            >
+              Nome
+            </Text>
+            <TextField
+              placeholder="Digite seu nome"
+              name="name"
+              value={userInfo.name}
+              onChange={handleChange}
+            />
+          </SmallInput>
+          <SmallInput>
+            <Text
+              marginBottom="5px"
+              variant="regular"
+              tag="p"
+              color="primary.main"
+            >
+              Email
+            </Text>
+            <TextField
+              placeholder="Digite seu email"
+              name="email"
+              value={userInfo.email}
+              onChange={handleChange}
+            />
+          </SmallInput>
+        </SmallInputContainer>
         <div>
           <Text
             marginBottom="5px"
@@ -127,7 +157,7 @@ function MessageContent() {
             Mensagem
           </Text>
           <textarea
-            placeholder="Mensagem"
+            placeholder="Digite sua mensagem"
             name="message"
             rows="7"
             style={{
@@ -145,32 +175,44 @@ function MessageContent() {
         </div>
         <Button
           type="submit"
-          disabled={isFormInvalid}
+          disabled={isFormInvalid || isMessageSubmitted}
           variant="primary.main"
           fullWidth
         >
-          Enviar
+          {!isMessageSubmitted && submissionStatus === formStates.DEFAULT && (
+            <>Enviar</>
+          )}
+          {isMessageSubmitted && submissionStatus === formStates.LOADING && (
+            <>
+              <Player
+                autoplay
+                loop
+                src={loadingAnimation}
+                style={{ height: '100px', width: '100px' }}
+              />
+            </>
+          )}
+          {isMessageSubmitted && submissionStatus === formStates.DONE && (
+            <>
+              <Player
+                autoplay
+                loop
+                src={successAnimation}
+                style={{ height: '100px', width: '100px' }}
+              />
+            </>
+          )}
+          {isMessageSubmitted && submissionStatus === formStates.ERROR && (
+            <>
+              <Player
+                autoplay
+                loop
+                src={errorAnimation}
+                style={{ height: '100px', width: '100px' }}
+              />
+            </>
+          )}
         </Button>
-        {isMessageSubmitted && submissionStatus === formStates.DONE && (
-          <>
-            <Player
-              autoplay
-              loop
-              src={successAnimation}
-              style={{ height: '100px', width: '100px' }}
-            />
-          </>
-        )}
-        {isMessageSubmitted && submissionStatus === formStates.ERROR && (
-          <>
-            <Player
-              autoplay
-              loop
-              src={errorAnimation}
-              style={{ height: '100px', width: '100px' }}
-            />
-          </>
-        )}
       </form>
     </>
   );
@@ -195,7 +237,7 @@ export default function MessageForm({ modalProps }) {
           flex={1}
           padding={{
             xs: '16px',
-            md: '65px',
+            md: '45px',
           }}
           backgroundColor="white"
           // eslint-disable-next-line react/jsx-props-no-spreading
