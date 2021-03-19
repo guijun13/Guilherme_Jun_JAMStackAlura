@@ -6,12 +6,15 @@ import HeaderWrapper from './styles/HeaderWrapper';
 const links = [
   {
     text: 'Sobre',
+    url: '/about',
   },
   {
     text: 'Projetos',
+    url: '/projects',
   },
   {
     text: 'Contato',
+    url: '/',
   },
 ];
 
@@ -24,7 +27,7 @@ export default function Header() {
       <HeaderWrapper.RightSide>
         {links.map(link => (
           <li key={link.text}>
-            <Text tag="a" variant="regular">
+            <Text tag="a" variant="regular" href={link.url}>
               {link.text}
             </Text>
           </li>

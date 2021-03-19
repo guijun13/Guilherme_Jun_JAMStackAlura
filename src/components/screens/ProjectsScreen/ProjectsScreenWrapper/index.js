@@ -23,33 +23,34 @@ export const LanguageBox = styled.div`
 `;
 
 // eslint-disable-next-line react/prop-types
-export default function ProjectWrapper({ project }) {
+export default function ProjectsScreenWrapper({ project }) {
   return (
     <ProjectCard>
       <img
         style={{ display: 'block', margin: 'auto', marginBottom: '20px' }}
-        src={project.image}
+        src="https://placehold.it/300x150.png"
         alt="img"
       />
       <Text marginBottom="20px" textAlign="center" tag="h5" variant="titleh5">
-        {project.title}
+        /{project.name}
       </Text>
       <Text margin="0 20px" textAlign="center" tag="p" variant="small">
-        {project.description}
+        {project.description != null
+          ? project.description
+          : 'Repo sem descrição'}
       </Text>
       <LanguageContainer>
-        {project.languages.map(lang => (
-          <LanguageBox key={lang}>
-            <Text textAlign="center" tag="p" variant="regular">
-              {lang}
-            </Text>
-          </LanguageBox>
-        ))}
+        <LanguageBox>
+          <Text textAlign="center" tag="p" variant="regular">
+            {project.language != null ? project.language : '?'}
+          </Text>
+        </LanguageBox>
       </LanguageContainer>
     </ProjectCard>
   );
 }
 
-ProjectWrapper.propTypes = {
-  project: PropTypes.string.isRequired,
+ProjectsScreenWrapper.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  project: PropTypes.object.isRequired,
 };

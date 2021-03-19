@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import styled, { css } from 'styled-components';
 import propToStyle from '../../../theme/utils/propToStyle';
+import Link from '../../commons/Link';
 
 export const TextStyleVariantsMap = {
   titleh1: css`
@@ -56,7 +57,20 @@ const TextBase = styled.span`
   ${propToStyle('margin')};
 `;
 
-export default function Text({ tag, variant, children, ...props }) {
+export default function Text({ tag, variant, children, href, ...props }) {
+  if (href) {
+    return (
+      <TextBase
+        as={Link}
+        href={href}
+        variant={variant}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...props}
+      >
+        {children}
+      </TextBase>
+    );
+  }
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <TextBase as={tag} variant={variant} {...props}>
@@ -69,9 +83,11 @@ Text.propTypes = {
   tag: PropTypes.string,
   variant: PropTypes.string,
   children: PropTypes.node.isRequired,
+  href: PropTypes.string,
 };
 
 Text.defaultProps = {
   tag: 'span',
   variant: 'regular',
+  href: '',
 };
