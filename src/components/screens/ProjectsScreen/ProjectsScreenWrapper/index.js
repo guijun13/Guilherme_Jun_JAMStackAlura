@@ -23,7 +23,7 @@ export const LanguageBox = styled.div`
 `;
 
 // eslint-disable-next-line react/prop-types
-export default function ProjectWrapper({ project }) {
+export default function ProjectsScreenWrapper({ project }) {
   return (
     <ProjectCard>
       <img
@@ -50,6 +50,6 @@ export default function ProjectWrapper({ project }) {
   );
 }
 
-ProjectWrapper.propTypes = {
+ProjectsScreenWrapper.propTypes = {
   project: PropTypes.string.isRequired,
 };
