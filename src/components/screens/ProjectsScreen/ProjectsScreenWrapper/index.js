@@ -31,7 +31,13 @@ export default function ProjectsScreenWrapper({ project }) {
         src="https://placehold.it/300x150.png"
         alt="img"
       />
-      <Text marginBottom="20px" textAlign="center" tag="h5" variant="titleh5">
+      <Text
+        marginBottom="20px"
+        textAlign="center"
+        tag="h5"
+        variant="titleh5"
+        href={`/projects/${project.name}`}
+      >
         /{project.name}
       </Text>
       <Text margin="0 20px" textAlign="center" tag="p" variant="small">
