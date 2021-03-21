@@ -5,8 +5,8 @@ import propToStyle from '../../../../theme/utils/propToStyle';
 const Grid = {
   Container: styled.div`
     width: 100%;
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 150px;
+    padding-left: 150px;
     margin-right: auto;
     margin-left: auto;
 
