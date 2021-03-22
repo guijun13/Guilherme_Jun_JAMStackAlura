@@ -13,6 +13,9 @@ const StyledLink = styled.a`
   text-decoration: none;
   opacity: 1;
   transition: opacity ${({ theme }) => theme.transition};
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:hover,
   &:focus {
     opacity: 0.5;
