@@ -14,7 +14,7 @@ const links = [
   },
   {
     text: 'Contato',
-    url: '/',
+    url: '',
   },
 ];
 
