@@ -12,13 +12,18 @@ const StyledLink = styled.a`
       : 'color: inherit;'};
   text-decoration: none;
   opacity: 1;
-  transition: opacity ${({ theme }) => theme.transition};
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* border-bottom: 1px solid #66d0a1;
+  box-shadow: inset 0 -5px 0 #66d0a1;
+  transition: background 0.35s cubic-bezier(0.33, 0.66, 0.66, 1);
   &:hover,
   &:focus {
-    opacity: 0.5;
+    background: #66d0a1;
+  } */
+  transition: color 0.35s;
+  &:hover,
+  &:focus {
+    font-weight: 400;
+    color: ${({ theme }) => theme.colors.primary.main.color};
   }
 `;
 

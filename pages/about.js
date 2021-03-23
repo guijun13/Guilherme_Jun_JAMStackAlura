@@ -45,8 +45,16 @@ export default function About() {
           >
             <Text margin="20px" tag="p" variant="titleh5">
               Sou Guilherme Jun, estudante de Ciências de Computação na USP -
-              campus São Carlos. Sou da empresa júnior do meu instituto, a ICMC
-              Júnior, onde faço parte do núcleo de Projetos de Computação desde
+              campus São Carlos. Sou da empresa júnior do meu instituto, a{' '}
+              <Text
+                tag="p"
+                variant="titleh5"
+                href="https://icmcjunior.com.br"
+                target="_blank"
+              >
+                ICMC Júnior
+              </Text>
+              , onde faço parte do núcleo de Projetos de Computação desde
               Out/2019.
               <br />
               <br />

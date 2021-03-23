@@ -31,8 +31,10 @@ export default function Sobre() {
         variant="regular"
         tag="p"
         color="tertiary.light"
-        textAlign="center"
         href="/"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
       >
         Voltar para home
       </Text>

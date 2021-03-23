@@ -129,7 +129,7 @@ export default function Footer() {
         </MessageButton>
         <SocialWrapper>
           {socials.map(social => (
-            <SocialIcon href={social.url} key={social.name}>
+            <SocialIcon target="_blank" href={social.url} key={social.name}>
               {social.icon}
             </SocialIcon>
           ))}
