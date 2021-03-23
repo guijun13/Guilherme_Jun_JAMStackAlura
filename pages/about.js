@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Header from '../src/components/commons/Header';
 import Grid from '../src/components/foundation/layout/Grid';
 import Text from '../src/components/foundation/Text';
@@ -20,28 +21,23 @@ export default function About() {
         </Grid.Row>
         <Grid.Row>
           <Grid.Col
-            value={{ lg: 4, md: 10, xs: 12 }} // ocupa colunas
-            offset={{ lg: 0, md: 0, xs: 0 }} // desloca/pula colunas
+            value={{ lg: 4, md: 7, sm: 9 }} // ocupa colunas
+            offset={{ lg: 0, md: 0, sm: 0 }} // desloca/pula colunas
             display="flex"
             alignItems="flex-start"
             justifyContent="flex-start"
             flexDirection="column"
           >
-            <img
-              style={{
-                display: 'block',
-                margin: 'auto',
-                marginBottom: '20px',
-                border: 'solid 7px #66D0A1',
-                borderRadius: '50%',
-              }}
+            <Image
               src="/images/profile.png"
               alt="img"
+              width={254}
+              height={300}
             />
           </Grid.Col>
           <Grid.Col
-            value={{ md: 12, xs: 12 }} // ocupa colunas
-            offset={{ md: 0, xs: 0 }} // desloca/pula colunas
+            value={{ lg: 8, md: 12, sm: 12 }} // ocupa colunas
+            offset={{ lg: 0, md: 0, sm: 0 }} // desloca/pula colunas
             display="flex"
             alignItems="center"
             justifyContent="center"
@@ -49,9 +45,9 @@ export default function About() {
           >
             <Text margin="20px" tag="p" variant="titleh5">
               Sou Guilherme Jun, estudante de Ciências de Computação na USP -
-              campus São Carlos. Faço parte da empresa júnior do meu instituto,
-              a ICMC Júnior, onde faço parte do núcleo de Projetos de Computação
-              desde Out/2019.
+              campus São Carlos. Sou da empresa júnior do meu instituto, a ICMC
+              Júnior, onde faço parte do núcleo de Projetos de Computação desde
+              Out/2019.
               <br />
               <br />
               Atualmente estou estudando Front-End web e mobile com HTML, CSS,
