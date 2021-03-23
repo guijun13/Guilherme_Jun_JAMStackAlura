@@ -40,7 +40,7 @@ const ButtonWrapper = styled.button`
       ${TextStyleVariantsMap.small}
     `,
     md: css`
-      ${TextStyleVariantsMap.titleh1}
+      ${TextStyleVariantsMap.titleh5}
     `,
   })}
 
