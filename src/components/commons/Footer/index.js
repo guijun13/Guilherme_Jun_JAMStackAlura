@@ -118,7 +118,12 @@ export default function Footer() {
           }}
         >
           <Mail />
-          <Text margin="0 0 0 10px" tag="p" variant="regular">
+          <Text
+            display={{ xs: 'inline-block', md: 'none' }}
+            margin="0 0 0 10px"
+            tag="p"
+            variant="regular"
+          >
             Enviar uma mensagem
           </Text>
         </MessageButton>
