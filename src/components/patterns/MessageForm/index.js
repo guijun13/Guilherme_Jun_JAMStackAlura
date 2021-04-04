@@ -67,6 +67,7 @@ function MessageContent() {
   return (
     <>
       <form
+        id="messageForm"
         onSubmit={event => {
           event.preventDefault(); // previne o evento padrao do <form />, que é action="/api/..."
 
