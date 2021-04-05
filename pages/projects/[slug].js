@@ -1,8 +1,9 @@
 import React from 'react';
 import RespositoryScreen from '../../src/components/screens/ProjectsScreen/RepositoryScreen';
+import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
 
 // eslint-disable-next-line react/prop-types
-export default function ProjectsRepoScreen({ repoName, repoDescription }) {
+function ProjectsRepoScreen({ repoName, repoDescription }) {
   console.log(repoName);
   console.log(repoDescription);
   return (
@@ -51,3 +52,11 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+
+export default websitePageHOC(ProjectsRepoScreen, {
+  pageWrapperProps: {
+    seoProps: {
+      headTitle: 'Projetos',
+    },
+  },
+});
