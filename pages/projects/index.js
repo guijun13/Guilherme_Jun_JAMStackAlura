@@ -1,12 +1,11 @@
 import React from 'react';
-import Header from '../../src/components/commons/Header';
 import ProjectsScreen from '../../src/components/screens/ProjectsScreen';
+import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
 
 // eslint-disable-next-line react/prop-types
-export default function Projects({ githubProjects }) {
+function Projects({ githubProjects }) {
   return (
     <>
-      <Header />
       <ProjectsScreen githubProjects={githubProjects} />
     </>
   );
@@ -23,3 +22,11 @@ export async function getStaticProps() {
     },
   };
 }
+
+export default websitePageHOC(Projects, {
+  pageWrapperProps: {
+    seoProps: {
+      headTitle: 'Projetos',
+    },
+  },
+});
