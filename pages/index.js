@@ -1,10 +1,9 @@
 import React from 'react';
-import Footer from '../src/components/commons/Footer';
-import Header from '../src/components/commons/Header';
 import Main from '../src/components/commons/Main';
 import Box from '../src/components/foundation/layout/Box';
+import websitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
 
-export default function Home() {
+function Home() {
   return (
     <Box
       flex={1}
@@ -12,13 +11,21 @@ export default function Home() {
       flexWrap="wrap"
       flexDirection="column"
       justifyContent="space-between"
-      backgroundImage="url(/images/bubble_green.svg)"
-      backgroundRepeat="no-repeat"
-      backgroundPosition="top left"
     >
-      <Header />
       <Main />
-      <Footer />
     </Box>
   );
 }
+
+export default websitePageHOC(Home, {
+  pageWrapperProps: {
+    seoProps: {
+      headTitle: 'Home',
+    },
+    pageBoxProps: {
+      backgroundImage: 'url(/images/bubble_green.svg)',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'top left',
+    },
+  },
+});

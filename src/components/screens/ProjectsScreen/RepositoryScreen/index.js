@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../../../commons/Header';
 import Box from '../../../foundation/layout/Box';
 import Grid from '../../../foundation/layout/Grid';
 import Text from '../../../foundation/Text';
@@ -8,8 +7,7 @@ import Text from '../../../foundation/Text';
 export default function RespositoryScreen({ repoName, repoDescription }) {
   return (
     <>
-      <Header />
-      <Grid.Container>
+      <Grid.Container height="100vh">
         <Box display="flex" flexDirection="column" padding="100px">
           <Text tag="h1" variant="titleh1" textAlign="center">
             {repoName}

@@ -41,6 +41,7 @@ export default function Header() {
           </li>
         ))}
         <Text
+          id="message-button"
           tag="a"
           variant="regular"
           onClick={() => {

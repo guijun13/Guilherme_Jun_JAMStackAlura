@@ -1,19 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
-import Header from '../src/components/commons/Header';
 import Grid from '../src/components/foundation/layout/Grid';
 import Text from '../src/components/foundation/Text';
+import websitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
 
-export default function About() {
+function About() {
   return (
     <>
-      <Header />
-      <Grid.Container
-        marginBottom={{
-          xs: '40px',
-          md: '50px',
-        }}
-      >
+      <Grid.Container height="100vh">
         <Grid.Row>
           <Text margin="50px 0" tag="h3" variant="titleh3">
             Sobre mim
@@ -45,8 +39,16 @@ export default function About() {
           >
             <Text margin="20px" tag="p" variant="titleh5">
               Sou Guilherme Jun, estudante de Ciências de Computação na USP -
-              campus São Carlos. Sou da empresa júnior do meu instituto, a ICMC
-              Júnior, onde faço parte do núcleo de Projetos de Computação desde
+              campus São Carlos. Sou da empresa júnior do meu instituto, a{' '}
+              <Text
+                tag="p"
+                variant="titleh5"
+                href="https://icmcjunior.com.br"
+                target="_blank"
+              >
+                ICMC Júnior
+              </Text>
+              , onde faço parte do núcleo de Projetos de Computação desde
               Out/2019.
               <br />
               <br />
@@ -64,3 +66,11 @@ export default function About() {
     </>
   );
 }
+
+export default websitePageHOC(About, {
+  pageWrapperProps: {
+    seoProps: {
+      headTitle: 'Sobre',
+    },
+  },
+});
