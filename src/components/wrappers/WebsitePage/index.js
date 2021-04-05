@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Footer from '../../commons/Footer';
 import Box from '../../foundation/layout/Box';
@@ -15,7 +15,9 @@ export default function WebsitePageWrapper({
 }) {
   return (
     <>
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <SEO {...seoProps} />
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Box {...pageBoxProps}>
         <Header />
         {children}

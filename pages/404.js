@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from '../src/components/commons/Header';
 import Text from '../src/components/foundation/Text';
 import websitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
 

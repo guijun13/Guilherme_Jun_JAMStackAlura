@@ -24,6 +24,7 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     // 'prettier/prettier': 'error',
     'prettier/prettier': ['error', { singleQuote: true, semi: true }],
+    'no-console': 'off',
   },
   overrides: [
     {
