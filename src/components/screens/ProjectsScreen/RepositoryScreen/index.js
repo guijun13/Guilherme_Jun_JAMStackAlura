@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../../../commons/Header';
 import Box from '../../../foundation/layout/Box';
 import Grid from '../../../foundation/layout/Grid';
 import Text from '../../../foundation/Text';
