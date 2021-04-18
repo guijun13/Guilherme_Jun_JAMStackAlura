@@ -1,38 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 import Footer from '../../commons/Footer';
 import Box from '../../foundation/layout/Box';
 import Header from '../../commons/Header';
 import SEO from '../../commons/SEO';
-// import Menu from '../../commons/Menu';
-// import Modal from '../../commons/Modal';
-// import RegisterForm from '../../patterns/RegisterForm';
+
+import { WebsitePageContext } from './context';
+import Modal from '../../commons/Modal';
+import MessageForm from '../../patterns/MessageForm';
+
+export { WebsitePageContext } from './context';
 
 export default function WebsitePageWrapper({
   children,
   pageBoxProps,
   seoProps,
+  messages,
 }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <>
+    <WebsitePageContext.Provider
+      value={{
+        toggleRegisterModal: () => {
+          setIsModalOpen(!isModalOpen);
+        },
+        getCMSContent: cmsKey => get(messages, cmsKey),
+      }}
+    >
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <SEO {...seoProps} />
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Box {...pageBoxProps}>
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => {
+            setIsModalOpen(false);
+          }}
+        >
+          {modalProps => <MessageForm modalProps={modalProps} />}
+        </Modal>
         <Header />
         {children}
         <Footer />
       </Box>
-    </>
+    </WebsitePageContext.Provider>
   );
 }
 
 WebsitePageWrapper.defaultProps = {
   seoProps: {},
   pageBoxProps: {},
-  // menuProps: {
-  //   display: true,
-  // },
+  messages: {},
 };
 
 WebsitePageWrapper.propTypes = {
@@ -48,4 +67,6 @@ WebsitePageWrapper.propTypes = {
     backgroundPosition: PropTypes.string,
   }),
   children: PropTypes.node.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  messages: PropTypes.object,
 };
