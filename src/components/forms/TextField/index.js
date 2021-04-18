@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Text from '../../foundation/Text';
 
 const InputWrapper = styled.div`
   margin-bottom: 17px;
 `;
 
-const Input = styled(Text)`
+const Input = styled.input`
   width: 100%;
   border: 3px solid ${({ theme }) => theme.colors.primary.main.color};
   padding: 12px 16px;
