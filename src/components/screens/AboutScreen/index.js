@@ -12,9 +12,12 @@ export default function AboutScreen({ messages }) {
     <>
       <Grid.Container height="100vh">
         <Grid.Row>
-          <Text margin="50px 0" tag="h3" variant="titleh3">
-            {messages.pageSobre.pageTitle}
-          </Text>
+          <Text
+            margin="50px 0"
+            tag="h3"
+            variant="titleh3"
+            cmsKey="pageSobre.pageTitle"
+          />
         </Grid.Row>
         <Grid.Row>
           <Grid.Col

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 import Footer from '../../commons/Footer';
 import Box from '../../foundation/layout/Box';
 import Header from '../../commons/Header';
@@ -15,6 +16,7 @@ export default function WebsitePageWrapper({
   children,
   pageBoxProps,
   seoProps,
+  messages,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
@@ -23,6 +25,7 @@ export default function WebsitePageWrapper({
         toggleRegisterModal: () => {
           setIsModalOpen(!isModalOpen);
         },
+        getCMSContent: cmsKey => get(messages, cmsKey),
       }}
     >
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
@@ -48,9 +51,7 @@ export default function WebsitePageWrapper({
 WebsitePageWrapper.defaultProps = {
   seoProps: {},
   pageBoxProps: {},
-  // menuProps: {
-  //   display: true,
-  // },
+  messages: {},
 };
 
 WebsitePageWrapper.propTypes = {
@@ -66,4 +67,6 @@ WebsitePageWrapper.propTypes = {
     backgroundPosition: PropTypes.string,
   }),
   children: PropTypes.node.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  messages: PropTypes.object,
 };

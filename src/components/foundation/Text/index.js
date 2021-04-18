@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import styled, { css } from 'styled-components';
 import propToStyle from '../../../theme/utils/propToStyle';
 import Link from '../../commons/Link';
+import { WebsitePageContext } from '../../wrappers/WebsitePage/context';
 
 export const TextStyleVariantsMap = {
   titleh1: css`
@@ -63,7 +64,20 @@ const TextBase = styled.span`
   ${propToStyle('width')};
 `;
 
-export default function Text({ tag, variant, children, href, ...props }) {
+export default function Text({
+  tag,
+  variant,
+  children,
+  href,
+  cmsKey,
+  ...props
+}) {
+  const websitePageContext = useContext(WebsitePageContext);
+
+  const componentContent = cmsKey
+    ? websitePageContext.getCMSContent(cmsKey)
+    : children;
+
   if (href) {
     return (
       <TextBase
@@ -73,14 +87,14 @@ export default function Text({ tag, variant, children, href, ...props }) {
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
       >
-        {children}
+        {componentContent}
       </TextBase>
     );
   }
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <TextBase as={tag} variant={variant} {...props}>
-      {children}
+      {componentContent}
     </TextBase>
   );
 }
@@ -88,12 +102,15 @@ export default function Text({ tag, variant, children, href, ...props }) {
 Text.propTypes = {
   tag: PropTypes.string,
   variant: PropTypes.string,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   href: PropTypes.string,
+  cmsKey: PropTypes.string,
 };
 
 Text.defaultProps = {
   tag: 'span',
   variant: 'regular',
+  children: '',
   href: '',
+  cmsKey: undefined,
 };
