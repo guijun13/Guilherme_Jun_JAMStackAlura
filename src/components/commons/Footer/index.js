@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import Text from '../../foundation/Text';
 import Github from '../../../theme/Github';
@@ -7,8 +7,7 @@ import Facebook from '../../../theme/Facebook';
 import Instagram from '../../../theme/Instagram';
 import Mail from '../../../theme/Mail';
 import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
-import Modal from '../Modal';
-import MessageForm from '../../patterns/MessageForm';
+import { WebsitePageContext } from '../../wrappers/WebsitePage/context';
 
 const socials = [
   {
@@ -96,25 +95,17 @@ const MessageButton = styled.button`
 `;
 
 export default function Footer() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const websitePageContext = useContext(WebsitePageContext);
 
   return (
     <FooterWrapper>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => {
-          setIsModalOpen(false);
-        }}
-      >
-        {modalProps => <MessageForm modalProps={modalProps} />}
-      </Modal>
       <Text margin="20px" tag="h3" variant="titleh3">
         Contato
       </Text>
       <SocialWrapper value={{ md: 6, xs: 12 }}>
         <MessageButton
           onClick={() => {
-            setIsModalOpen(!isModalOpen);
+            websitePageContext.toggleRegisterModal();
           }}
         >
           <Mail />

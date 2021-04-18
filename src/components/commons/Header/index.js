@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Logo from '../../../theme/Logo';
 import Text from '../../foundation/Text';
-import MessageForm from '../../patterns/MessageForm';
-import Modal from '../Modal';
+import { WebsitePageContext } from '../../wrappers/WebsitePage/context';
 import HeaderWrapper from './styles/HeaderWrapper';
 
 const links = [
@@ -17,18 +16,10 @@ const links = [
 ];
 
 export default function Header() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const websitePageContext = useContext(WebsitePageContext);
 
   return (
     <HeaderWrapper>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => {
-          setIsModalOpen(false);
-        }}
-      >
-        {modalProps => <MessageForm modalProps={modalProps} />}
-      </Modal>
       <HeaderWrapper.LeftSide>
         <Logo />
       </HeaderWrapper.LeftSide>
@@ -45,7 +36,7 @@ export default function Header() {
           tag="a"
           variant="regular"
           onClick={() => {
-            setIsModalOpen(!isModalOpen);
+            websitePageContext.toggleRegisterModal();
           }}
         >
           Contato
